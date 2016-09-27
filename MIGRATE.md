@@ -2,6 +2,14 @@
 
 `-- psql -d <database_name> -h 192.168.250.1 -U ngw_admin -a -f migration.sql`
 
+#### (2016-09-27)
+
+```sql
+ALTER TABLE wmsclient_connection DROP CONSTRAINT wmsclient_connection_version_check;
+ALTER TABLE wmsclient_connection DROP CONSTRAINT wmsclient_connection_version_check1;
+ALTER TABLE wmsclient_connection ADD CONSTRAINT wmsclient_connection_version_check CHECK (version IN ('1.1.1', '1.3.0'));
+```
+
 #### `-- ee85d1ceb4976b20e9eeb0925b614a604554aeb7` (2016-03-08)
 
 ```sql
